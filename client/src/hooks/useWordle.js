@@ -10,13 +10,12 @@ const useWordle = (solution) => {
   const [usedKeys, setUsedKeys] = useState({}); // {a: 'green', b: 'yellow', c:'gray'}
 
   const trackUserGuess = ({ key }) => {
-    
+
     if (isCorrect) {
       return;
     }
 
     if (key === 'Enter') {
-
       if (turnCount > 5) {
         return;
       }
@@ -52,7 +51,7 @@ const useWordle = (solution) => {
       })
       
       // Add new guess
-      if (currentGuess === solution) setIsCorrect(true);
+      if (currentGuess.toLowerCase() === solution.toLowerCase()) setIsCorrect(true);
 
       setGuesses(prevGuesses => {
         let newGuesses = [...prevGuesses]
@@ -72,7 +71,7 @@ const useWordle = (solution) => {
         let newKeys = {...prevUsedKeys};
 
         formattedGuess.forEach((letter) => {
-          const currentColor = newKeys[letter];
+          const currentColor = newKeys[letter.key];
 
           if (letter.color === 'green') {
             newKeys[letter.key] = 'green';
@@ -107,7 +106,6 @@ const useWordle = (solution) => {
   }
 
   return { turnCount, currentGuess, guesses, isCorrect, usedKeys, trackUserGuess }
-
 }
 
 export default useWordle
