@@ -9,7 +9,7 @@ function App() {
     fetch('http://localhost:3000/ping-wordle')
       .then(res => res.json())
       .then(json => {
-        setAnswer(json.solution);
+        setAnswer(json.solution.toLowerCase());
       })
   }, [setAnswer]);
 
