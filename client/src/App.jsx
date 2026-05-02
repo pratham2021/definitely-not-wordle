@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Wordle from './components/Wordle';
 
 function App() {
 
@@ -7,15 +8,15 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000/ping-wordle')
       .then(res => res.json())
-      .then(json=> {
+      .then(json => {
         setAnswer(json.solution);
       })
-  }, []);
+  }, [setAnswer]);
 
   return (
     <div className="App">
       <h1>Definitely Not Wordle</h1>
-      {/* {answer && <div>Solution is: {answer}</div>} */}
+      {answer && <Wordle solution={answer}/>}
     </div>
   )
 }
