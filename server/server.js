@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require("path");
 
+console.log('__dirname is:', __dirname);
+
 const app = express();
 
 app.use(express.json());
