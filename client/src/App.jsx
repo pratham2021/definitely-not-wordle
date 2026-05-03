@@ -6,7 +6,7 @@ function App() {
   const [answer, setAnswer] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/ping-wordle')
+    fetch('/ping-wordle')
       .then(res => res.json())
       .then(json => {
         setAnswer(json.solution.toLowerCase());
